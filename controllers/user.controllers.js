@@ -2,15 +2,16 @@ const models = require('../models');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// function index(req, res) {
-//     models.user.findAll().then(result => {
-//           res.status(200).json(result);
-//     }).catch(error => {
-//            res.status(500).json({
-//                message: "something went wrong"
-//            });
-//     });
-// }
+function index(req, res) {
+    models.user.findAll().then(result => {
+          res.status(200).json(result);
+    }).catch(error => {
+        console.log(error);
+           res.status(500).json({
+               message: "something went wrong"
+           });
+    });
+}
 
 function signUp(req, res) {
     bcryptjs.genSalt(10, function(err, salt){
@@ -38,13 +39,9 @@ function signUp(req, res) {
 }
 
 
-
-
-
-
 module.exports = {
-    //index: index,
-    signUp: signUp
+    index: index,
+    // signUp: signUp
    // show: show,
    // update: update,
     //destroy: destroy
